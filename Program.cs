@@ -16,14 +16,12 @@
 
             foreach (int elem in input)
             {
-                if (!frequencies.ContainsKey(elem))
-                {
-                    frequencies.Add(elem, 1);
-                }
-                else
+
+                if (!frequencies.TryAdd(elem, 1))
                 {
                     frequencies[elem]++;
                 }
+                
             }
             return frequencies;
         }
@@ -33,7 +31,7 @@
         {
             foreach (int elem in dict.Keys)
             {
-                Console.WriteLine($"Number: { elem } Frequency: { dict.GetValueOrDefault(elem) } ");
+                Console.WriteLine($"Number: { elem } Frequency: {dict[elem]} ");
             }
         }
     }
